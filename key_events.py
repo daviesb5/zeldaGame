@@ -10,10 +10,11 @@ Compass directions: N/S, E/W
 """
 # IMAGES FOR LINK ANIMATED WALKING
 img_path = './sprites/link/'
-w_path = img_path + 'n' + '00'
-a_path = img_path + 'w' + '00'
-s_path = img_path + 's' + '00'
-d_path = img_path + 'e' + '00'
+move = '00'
+w_path = img_path + 'n' + move
+a_path = img_path + 'w' + move
+s_path = img_path + 's' + move
+d_path = img_path + 'e' + move
 
 w_images = [w_path+str(w)+'.png' for w in range(7)]
 a_images = [a_path+str(a)+'.png' for a in range(7)]

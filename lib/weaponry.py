@@ -14,4 +14,13 @@ class ORB:
 # Arrow
 class ARROW:
     def __init__(self, X, Y, DIRECTION):
-        self.IMAGE = pygame.transform.scale()
+        self.IMAGE = pygame.transform.scale(pygame.image.load('./sprites/arrows/e-01.png'), (25, 25))
+        self.POS = [X, Y]
+        self.DIRECTION = DIRECTION
+
+# Red-Arrow
+class REDARROW:
+    def __init__(self, X, Y, DIRECTION):
+        self.IMAGE = pygame.transform.scale(pygame.image.load('./sprites/red-arrows/e-01.png'), (25, 25))
+        self.POS = [X, Y]
+        self.DIRECTION = DIRECTION
