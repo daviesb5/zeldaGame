@@ -22,6 +22,7 @@ class MIDNA:
         self.SPRITE_POS = pygame.transform.scale(pygame.image.load('./sprites/midna.png'), (50, 75))
         self.APPEARED = False
 
+"Ziqa's Weapon"
 class ORB:
     def __init__(self, X, Y, DIRECTION):
         self.IMAGE = pygame.transform.scale(pygame.image.load('./sprites/orbs/orb1.png'), (25, 25))
