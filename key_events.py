@@ -29,6 +29,16 @@ wolf_b_images = [wolf_b_path + str(b) + '.png' for b in range(7)]
 wolf_r_images = [wolf_r_path + str(r) + '.png' for r in range(4)]
 wolf_l_images = [wolf_l_path + str(l) + '.png' for l in range(4)]
 
+"""
+# IMAGES FOR LINK ANIMATED WALKING
+img_key = './sprites/link/'
+n_path = 'n' + img_key
+e_path = 'e' + img_key
+s_path = 's' + img_key
+w_path = 'w' + img_key
+
+n_images = [n_path+str(n)+'.png' for f in range(7)]
+"""
 
 class KeyEvents:
     def __init__(self, PLAYER):
