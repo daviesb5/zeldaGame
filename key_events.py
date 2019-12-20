@@ -5,6 +5,24 @@ import sys
 Lib for all key events
 """
 
+"""
+Compass directions: N/S, E/W
+"""
+# IMAGES FOR LINK ANIMATED WALKING
+img_path = './sprites/link/'
+w_path = img_path + 'n' + '00'
+a_path = img_path + 'w' + '00'
+s_path = img_path + 's' + '00'
+d_path = img_path + 'e' + '00'
+
+w_images = [w_path+str(w)+'.png' for w in range(7)]
+a_images = [a_path+str(a)+'.png' for a in range(7)]
+s_images = [s_path+str(s)+'.png' for s in range(7)]
+d_images = [d_path+str(d)+'.png' for d in range(7)]
+
+"""
+Old directions: F/B, R/L
+
 # IMAGES FOR LINK ANIMATED WALKING
 img_path = './sprites/link/link_'
 f_path = img_path + 'f' 
@@ -12,11 +30,11 @@ b_path = img_path + 'b'
 r_path = img_path + 'r'
 l_path =  img_path + 'l'
 
-f_images = [f_path+str(f)+'.png' for f in range(7)]
-b_images = [b_path+str(b)+'.png' for b in range(7)]
-r_images = [r_path+str(r)+'.png' for r in range(7)] 
-l_images = [l_path+str(l)+'.png' for l in range(7)]
-
+n_images = [f_path+str(f)+'.png' for f in range(7)]
+w_images = [b_path+str(b)+'.png' for b in range(7)]
+d_images = [r_path+str(r)+'.png' for r in range(7)] 
+a_images = [l_path+str(l)+'.png' for l in range(7)]
+"""
 # IMAGES FOR WOLF LINK ANIMATED WALKING
 img_path = './sprites/wolf/wolf_'
 wolf_f_path = img_path + 'f'
@@ -24,21 +42,11 @@ wolf_b_path = img_path + 'b'
 wolf_r_path = img_path + 'r'
 wolf_l_path = img_path + 'l'
 
-wolf_f_images = [wolf_f_path + str(f) + '.png' for f in range(7)]
-wolf_b_images = [wolf_b_path + str(b) + '.png' for b in range(7)]
-wolf_r_images = [wolf_r_path + str(r) + '.png' for r in range(4)]
-wolf_l_images = [wolf_l_path + str(l) + '.png' for l in range(4)]
+wolf_n_images = [wolf_f_path + str(f) + '.png' for f in range(7)]
+wolf_w_images = [wolf_b_path + str(b) + '.png' for b in range(7)]
+wolf_d_images = [wolf_r_path + str(r) + '.png' for r in range(4)]
+wolf_a_images = [wolf_l_path + str(l) + '.png' for l in range(4)]
 
-"""
-# IMAGES FOR LINK ANIMATED WALKING
-img_key = './sprites/link/'
-n_path = 'n' + img_key
-e_path = 'e' + img_key
-s_path = 's' + img_key
-w_path = 'w' + img_key
-
-n_images = [n_path+str(n)+'.png' for f in range(7)]
-"""
 
 class KeyEvents:
     def __init__(self, PLAYER):
@@ -63,45 +71,45 @@ class KeyEvents:
         self.PLAYER.PLAYER_POS[1] += self.movement
         self.PLAYER.DIRECTION = 'd'
 
-        self.PLAYER.SPRITE_POS = pygame.image.load(f_images[self.counter])
-        self.counter = (self.counter + 1) % len(f_images)
+        self.PLAYER.SPRITE_POS = pygame.image.load(s_images[self.counter])
+        self.counter = (self.counter + 1) % len(s_images)
 
         if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_f_images[self.wolf_counter])
-            self.wolf_counter = (self.wolf_counter + 1) % len(wolf_f_images)
+            self.PLAYER.WOLF  = pygame.image.load(wolf_s_images[self.wolf_counter])
+            self.wolf_counter = (self.wolf_counter + 1) % len(wolf_s_images)
 
     def key_up(self):
         self.PLAYER.PLAYER_POS[1] -= self.movement 
         self.PLAYER.DIRECTION = 'u'
 
-        self.PLAYER.SPRITE_POS = pygame.image.load(b_images[self.counter])
-        self.counter = (self.counter + 1) % len(b_images)
+        self.PLAYER.SPRITE_POS = pygame.image.load(w_images[self.counter])
+        self.counter = (self.counter + 1) % len(w_images)
 
         if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_b_images[self.wolf_counter])
-            self.wolf_counter = (self.wolf_counter + 1) % len(wolf_b_images)
+            self.PLAYER.WOLF  = pygame.image.load(wolf_w_images[self.wolf_counter])
+            self.wolf_counter = (self.wolf_counter + 1) % len(wolf_w_images)
 
     def key_left(self):
         self.PLAYER.PLAYER_POS[0] -= self.movement 
         self.PLAYER.DIRECTION = 'l'
 
-        self.PLAYER.SPRITE_POS = pygame.image.load(l_images[self.counter])
-        self.counter = (self.counter + 1) % len(l_images)
+        self.PLAYER.SPRITE_POS = pygame.image.load(a_images[self.counter])
+        self.counter = (self.counter + 1) % len(a_images)
 
         if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_l_images[self.wolf_counter_lr])
-            self.wolf_counter_lr = (self.wolf_counter_lr + 1) % len(wolf_l_images)
+            self.PLAYER.WOLF  = pygame.image.load(wolf_a_images[self.wolf_counter_lr])
+            self.wolf_counter_lr = (self.wolf_counter_lr + 1) % len(wolf_a_images)
 
     def key_right(self):
         self.PLAYER.PLAYER_POS[0] += self.movement
         self.PLAYER.DIRECTION = 'r'
 
-        self.PLAYER.SPRITE_POS = pygame.image.load(r_images[self.counter])
-        self.counter = (self.counter + 1) % len(r_images)
+        self.PLAYER.SPRITE_POS = pygame.image.load(d_images[self.counter])
+        self.counter = (self.counter + 1) % len(d_images)
 
         if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_r_images[self.wolf_counter_lr])
-            self.wolf_counter_lr = (self.wolf_counter_lr + 1) % len(wolf_r_images)
+            self.PLAYER.WOLF  = pygame.image.load(wolf_d_images[self.wolf_counter_lr])
+            self.wolf_counter_lr = (self.wolf_counter_lr + 1) % len(wolf_d_images)
 
     def key_space(self):
         if self.PLAYER.WEAPON:
