@@ -1,0 +1,43 @@
+===================================
+DIRECTIONS
+===================================
+n = north
+e = east
+s = south
+w = west
+
+
+===================================
+MISC
+===================================
+die	= character is killed
+stone	= character becomes stone
+spin	= character spins (e.g., spin41 = spinning attack)
+spell	= character spell attack
+warp	= warp in
+
+===================================
+NUMBERS
+===================================
+000	= stand
+001-010	= walk / run
+011-020 = roll
+021-030	= jump
+031-040 = move w/ melee
+041-050	= melee attack 1
+051-060	= melee attack 2
+061-070	= melee attack 3 ("super")
+071-080 = move w/ shield
+081-090	= block 1
+091-100 = move /w bow
+101-110	= shoot arrow 1
+111-120	= shoot arrow 2
+121-130	= move w/ long
+131-140	= long attack 1
+141-150	= long attack 2
+151-160	= move /w ability
+161-170	= ability 1
+171-180 = ability 2
+181-190	= ability 3
+191-200 = gets hit 
+201-210	= ???
