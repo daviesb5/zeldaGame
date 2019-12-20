@@ -15,18 +15,11 @@ class ZIQA:
 class REDLINK:
     def __init__(self):
         self.REDLINK = pygame.image.load('./sprites/red-link/warp01.png')
-        self.APPEAR = False
+        self.APPEAR = True
         self.POS = []
-        self.SUMMONED = False
+        self.SUMMONED = True
         self.HEALTH = 50
 
-# Ziqa's Weapon
-class ORB:
-    def __init__(self, X, Y, DIRECTION):
-        self.IMAGE = pygame.transform.scale(pygame.image.load('./sprites/orbs/orb1.png'), (25, 25))
-        self.POS = [X, Y]
-        self.DIRECTION = DIRECTION
-        
 # Old Villians
 
 class GANON:

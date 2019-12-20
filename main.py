@@ -9,19 +9,25 @@ import math
 # INSTANCES OF GAME OBJECTS
 PLAYER = heroes.LINK()
 key_events = KeyEvents(PLAYER)
+"""
 WAND = items.WAND()
 GOLD = items.GOLD()
+"""
 SWORD = items.SWORD()
 SHIELD = items.SHIELD()
 BOW = items.BOW()
-GANON = enemies.GANON()
+ZIQA = enemies.ZIQA()
 PORTAL = enemies.PORTAL()
 TEMPLE = TEMPLE()
 MIDNA = heroes.MIDNA()
+"""
+
+"""
 
 # GROUPINGS OF RELATED GAME OBJECTS
-GAME_ITEMS = [WAND, SWORD, SHIELD]
-GAME_WEAPONS = [WAND, BOW]
+GAME_ITEMS = [SWORD, SHIELD]
+GAME_WEAPONS = [BOW]
+WEAPONRY = ["""ARROW, REDARROW"""]
 BEAST_LIST = []
 orbs_list = []
 
@@ -34,7 +40,7 @@ portal_images = [portal_path + str(p) + '.png' for p in range(1, 7)]
 """
 TIMED EVENTS
 """
-# GANON MOVEMENT
+# ZIQA MOVEMENT
 pygame.time.set_timer(USEREVENT, 400)
 # SPAWN BEAST
 pygame.time.set_timer(USEREVENT + 1, 7500)
@@ -49,12 +55,12 @@ GAME_OVER = False
 # GAME LOOP
 while not GAME_OVER:
 
-    GANON_VULNERABLE_IF = [beast for beast in BEAST_LIST if beast.APPEAR == True]
+    ZIQA_VULNERABLE_IF = [beast for beast in BEAST_LIST if beast.APPEAR == True]
 
-    if len(GANON_VULNERABLE_IF) < 1:
-        GANON.VULNERABLE = True
+    if len(ZIQA_VULNERABLE_IF) < 1:
+        ZIQA.VULNERABLE = True
     else:
-        GANON.VULNERABLE = False
+        ZIQA.VULNERABLE = False
 
     for event in pygame.event.get():
 
@@ -63,10 +69,10 @@ while not GAME_OVER:
     
         if event.type == QUIT:
             key_events.quit()
-    
+        """
         if keys[K_w] and keys[K_t]:
             key_events.key_w()
-
+        """
         # MOVE RIGHT
         if (keys[K_RIGHT]) and PLAYER.PLAYER_POS[0] < MAPWIDTH - 1:
            key_events.key_right() 
@@ -88,15 +94,17 @@ while not GAME_OVER:
             key_events.key_space()
     
         # FIRE ORB FROM WAND
+        """
         if (keys[K_f]):
             if PLAYER.WEAPON == WAND:
                 orbs_list.append(heroes.ORB(math.ceil(PLAYER.PLAYER_POS[0]), math.ceil(PLAYER.PLAYER_POS[1]), PLAYER.DIRECTION))
+        """
 
         """
         TIMED EVENTS
         """
 
-        # GANON W/PORTAL MOVEMENT
+        # ZIQA W/PORTAL MOVEMENT
         if (event.type == USEREVENT):
             if PORTAL.FRAME < 5:
                 PORTAL.FRAME += 1
@@ -104,7 +112,7 @@ while not GAME_OVER:
                 x = random.randint(1, 9)
                 y = random.randint(1, 9)
                 PORTAL.POS = [x, y]
-                GANON.GANON_POS = [x, y]
+                ZIQA.ZIQA_POS = [x, y]
                 PORTAL.FRAME = 1
         
         # BEAST OBJECT GENERATOR 
@@ -166,10 +174,12 @@ while not GAME_OVER:
             DISPLAYSURFACE.blit(TEXTURES[GRID[row][column]], (column*TILESIZE, row*TILESIZE))
 
     # RENDER LINK
+    
     if PLAYER.TRANSFORM:
         DISPLAYSURFACE.blit(PLAYER.WOLF, (PLAYER.PLAYER_POS[0]*TILESIZE, PLAYER.PLAYER_POS[1]*TILESIZE))
     else:
         DISPLAYSURFACE.blit(PLAYER.SPRITE_POS, (PLAYER.PLAYER_POS[0]*TILESIZE, PLAYER.PLAYER_POS[1]*TILESIZE))
+    
 
     # RENDER TEMPLE
     DISPLAYSURFACE.blit(TEMPLE.SPRITE, (TEMPLE.X_POS*TILESIZE, TEMPLE.Y_POS*TILESIZE))
@@ -200,9 +210,9 @@ while not GAME_OVER:
 
     # RENDER ORBS
     for orb in orbs_list:
-        if orb.POS == GANON.GANON_POS and GANON.VULNERABLE:
-            print('GANON HEALTH', GANON.HEALTH)
-            GANON.HEALTH -= 10
+        if orb.POS == ZIQA.ZIQA_POS and ZIQA.VULNERABLE:
+            print('ZIQA HEALTH', ZIQA.HEALTH)
+            ZIQA.HEALTH -= 10
         for beast in BEAST_LIST:
                 if orb.POS == beast.POS:
                     beast.APPEAR = False
@@ -227,23 +237,23 @@ while not GAME_OVER:
     DISPLAYSURFACE.blit(PLAYER_HEALTH_BAR_TEXT, (15, MAPHEIGHT*TILESIZE-500))
     DISPLAYSURFACE.blit(HEALTHFONT.render(str(PLAYER.HEALTH), True, GREEN, BLACK), (225, MAPHEIGHT*TILESIZE - 500))
 
-    # RENDER GANON HEALTH BAR
-    PLAYER_MANA_BAR_TEXT = HEALTHFONT.render('GANON HEALTH:', True, RED, BLACK)
+    # RENDER ZIQA HEALTH BAR
+    PLAYER_MANA_BAR_TEXT = HEALTHFONT.render('ZIQA HEALTH:', True, RED, BLACK)
     DISPLAYSURFACE.blit(PLAYER_MANA_BAR_TEXT, (650, MAPHEIGHT*TILESIZE-500))
-    DISPLAYSURFACE.blit(HEALTHFONT.render(str(GANON.HEALTH), True, RED, BLACK), (900, MAPHEIGHT*TILESIZE-500))
+    DISPLAYSURFACE.blit(HEALTHFONT.render(str(ZIQA.HEALTH), True, RED, BLACK), (900, MAPHEIGHT*TILESIZE-500))
 
     # RENDER TREES
     for tree in sorted(trees, key=lambda t: t.Y_POS):
         DISPLAYSURFACE.blit(tree.SPRITE, (tree.X_POS, tree.Y_POS))
 
-    # RENDER GANON AND PORTAL
-    DISPLAYSURFACE.blit(pygame.image.load(portal_images[PORTAL.FRAME]), (GANON.GANON_POS[0]*TILESIZE, GANON.GANON_POS[1]*TILESIZE))
-    DISPLAYSURFACE.blit(GANON.GANON, (GANON.GANON_POS[0]*TILESIZE, GANON.GANON_POS[1]*TILESIZE))
+    # RENDER ZIQA AND PORTAL
+    DISPLAYSURFACE.blit(pygame.image.load(portal_images[PORTAL.FRAME]), (ZIQA.ZIQA_POS[0]*TILESIZE, ZIQA.ZIQA_POS[1]*TILESIZE))
+    DISPLAYSURFACE.blit(ZIQA.ZIQA, (ZIQA.ZIQA_POS[0]*TILESIZE, ZIQA.ZIQA_POS[1]*TILESIZE))
 
     
     pygame.display.update()
 
-    if GANON.HEALTH <= 0:
+    if ZIQA.HEALTH <= 0:
         GAME_OVER = True
         print('GAME OVER, YOU WIN!')
     

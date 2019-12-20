@@ -13,7 +13,7 @@ class LINK:
         self.TRANSFORM = False
         self.WOLF = pygame.image.load('./sprites/wolf/wolf_f0.png')
         
-    
+    """Turn into Wolf"""
     def TRANSFORMING(self):
         self.TRANSFORM = not self.TRANSFORM
 
@@ -21,10 +21,3 @@ class MIDNA:
     def __init__(self):
         self.SPRITE_POS = pygame.transform.scale(pygame.image.load('./sprites/midna.png'), (50, 75))
         self.APPEARED = False
-
-"Ziqa's Weapon"
-class ORB:
-    def __init__(self, X, Y, DIRECTION):
-        self.IMAGE = pygame.transform.scale(pygame.image.load('./sprites/orbs/orb1.png'), (25, 25))
-        self.POS = [X, Y]
-        self.DIRECTION = DIRECTION
