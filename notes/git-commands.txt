@@ -1,0 +1,17 @@
+export PATH=$PATH:/C/Users/Braedon/AppData/Local/Programs/Python/Python38-32/
+
+python --version
+
+where python
+
+cd C:/Users/Braedon/Documents/side-projects/01-my-projects/zeldaGame
+
+ls
+
+export PATH=$PATH:/C/Users/Braedon/AppData/Local/Programs/Python/Python38-32/Scripts/pip3
+
+pip3 install pygame
+
+pip3 install -r requirements.txt
+
+python main.py

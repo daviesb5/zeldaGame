@@ -114,6 +114,26 @@ class KeyEvents:
 
     def key_space(self):
         if self.PLAYER.WEAPON:
+            new_path = '.sprites/link/'
+            melee = '04'
+            w_path = new_path + 'n' + melee
+            a_path = new_path + 'w' + melee
+            s_path = new_path + 's' + melee
+            d_path = new_path + 'e' + melee
+            """
+            # IMAGES FOR LINK ANIMATED WALKING
+            img_path = './sprites/link/'
+            move = '00'
+            w_path = img_path + 'n' + move
+            a_path = img_path + 'w' + move
+            s_path = img_path + 's' + move
+            d_path = img_path + 'e' + move
+
+            w_images = [w_path+str(w)+'.png' for w in range(7)]
+            a_images = [a_path+str(a)+'.png' for a in range(7)]
+            s_images = [s_path+str(s)+'.png' for s in range(7)]
+            d_images = [d_path+str(d)+'.png' for d in range(7)]
+
             self.PLAYER.PLAYER_INV.remove(self.PLAYER.WEAPON)
             self.PLAYER.WEAPON.PLACED = True
 
@@ -130,7 +150,7 @@ class KeyEvents:
             elif self.PLAYER.DIRECTION == 'l':
                     self.PLAYER.WEAPON.POS[0] = self.PLAYER.PLAYER_POS[0] + 1
                     self.PLAYER.WEAPON.POS[1] = self.PLAYER.PLAYER_POS[1]
-
+            """
         self.PLAYER.WEAPON = False
     
     def key_w(self):

@@ -89,12 +89,16 @@ while not GAME_OVER:
         if (keys[K_DOWN]) and PLAYER.PLAYER_POS[1] < MAPHEIGHT - 1:
             key_events.key_down()
     
-        # PLACING DOWN ITEMS
+        # ATTACK W/ SWORD
         if (keys[K_SPACE]):
             key_events.key_space()
-    
-        # FIRE ORB FROM WAND
+
+        # FIRE ARROW
+        if (keys[K_f]):
+            # if PLAYER.HASBOW == True:
+                arrow_list.append(heroes.ARROW(mail.ceail(PLAYER.PLAYER_POS[0]), math.ceil(PLAYER.PLAYER_POS[1]), PLAYER.DIRECTION))
         """
+        # FIRE ORB FROM WAND
         if (keys[K_f]):
             if PLAYER.WEAPON == WAND:
                 orbs_list.append(heroes.ORB(math.ceil(PLAYER.PLAYER_POS[0]), math.ceil(PLAYER.PLAYER_POS[1]), PLAYER.DIRECTION))
@@ -104,7 +108,9 @@ while not GAME_OVER:
         TIMED EVENTS
         """
 
+        
         # ZIQA W/PORTAL MOVEMENT
+        
         if (event.type == USEREVENT):
             if PORTAL.FRAME < 5:
                 PORTAL.FRAME += 1
@@ -143,7 +149,7 @@ while not GAME_OVER:
                             beast.POS[coordinate] += 1 
                         else:
                             beast.POS[coordinate] -= 1
-        
+
         # ORB PATH MOVEMENT ANIMATION
         elif (event.type == USEREVENT + 4):
             for orb in orbs_list:
