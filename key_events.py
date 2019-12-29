@@ -16,10 +16,13 @@ a_path = img_path + 'w' + move
 s_path = img_path + 's' + move
 d_path = img_path + 'e' + move
 
-w_images = [w_path+str(w)+'.png' for w in range(7)]
-a_images = [a_path+str(a)+'.png' for a in range(7)]
-s_images = [s_path+str(s)+'.png' for s in range(7)]
-d_images = [d_path+str(d)+'.png' for d in range(7)]
+"""
+Note: Range of 10 goes from ?000 to ?009. Having a range of 11 renders the last image ?0010, which will return an error.
+"""
+w_images = [w_path+str(w)+'.png' for w in range(10)]
+a_images = [a_path+str(a)+'.png' for a in range(10)]
+s_images = [s_path+str(s)+'.png' for s in range(10)]
+d_images = [d_path+str(d)+'.png' for d in range(10)]
 
 """
 Old directions: F/B, R/L
@@ -35,7 +38,7 @@ n_images = [f_path+str(f)+'.png' for f in range(7)]
 w_images = [b_path+str(b)+'.png' for b in range(7)]
 d_images = [r_path+str(r)+'.png' for r in range(7)] 
 a_images = [l_path+str(l)+'.png' for l in range(7)]
-"""
+
 # IMAGES FOR WOLF LINK ANIMATED WALKING
 img_path = './sprites/wolf/wolf_'
 wolf_f_path = img_path + 'f'
@@ -47,7 +50,7 @@ wolf_n_images = [wolf_f_path + str(f) + '.png' for f in range(7)]
 wolf_w_images = [wolf_b_path + str(b) + '.png' for b in range(7)]
 wolf_d_images = [wolf_r_path + str(r) + '.png' for r in range(4)]
 wolf_a_images = [wolf_l_path + str(l) + '.png' for l in range(4)]
-
+"""
 
 class KeyEvents:
     def __init__(self, PLAYER):

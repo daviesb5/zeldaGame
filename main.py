@@ -27,9 +27,10 @@ MIDNA = heroes.MIDNA()
 # GROUPINGS OF RELATED GAME OBJECTS
 GAME_ITEMS = [SWORD, SHIELD]
 GAME_WEAPONS = [BOW]
-WEAPONRY = ["""ARROW, REDARROW"""]
-BEAST_LIST = []
+"""WEAPONRY = [ARROW]"""
+#BEAST_LIST = []
 orbs_list = []
+arrow_list = []
 
 # OTHER CONFIG
 INVFONT = pygame.font.SysFont('FreeSansBold.ttf', 20)
@@ -55,12 +56,14 @@ GAME_OVER = False
 # GAME LOOP
 while not GAME_OVER:
 
+    """
     ZIQA_VULNERABLE_IF = [beast for beast in BEAST_LIST if beast.APPEAR == True]
 
     if len(ZIQA_VULNERABLE_IF) < 1:
         ZIQA.VULNERABLE = True
     else:
         ZIQA.VULNERABLE = False
+    """
 
     for event in pygame.event.get():
 
@@ -120,7 +123,7 @@ while not GAME_OVER:
                 PORTAL.POS = [x, y]
                 ZIQA.ZIQA_POS = [x, y]
                 PORTAL.FRAME = 1
-        
+        """
         # BEAST OBJECT GENERATOR 
         elif (event.type == USEREVENT + 1):
             NEW_BEAST = enemies.BEAST()
@@ -149,7 +152,9 @@ while not GAME_OVER:
                             beast.POS[coordinate] += 1 
                         else:
                             beast.POS[coordinate] -= 1
+        """
 
+        """
         # ORB PATH MOVEMENT ANIMATION
         elif (event.type == USEREVENT + 4):
             for orb in orbs_list:
@@ -161,6 +166,7 @@ while not GAME_OVER:
                     orb.POS[0] -= 1 
                 elif orb.DIRECTION == 'r':
                     orb.POS[0] += 1
+        """
 
         # PICKUP ITEM CONDITIONS
         for item in GAME_ITEMS:
@@ -202,12 +208,14 @@ while not GAME_OVER:
     if PLAYER.WEAPON:
         DISPLAYSURFACE.blit(PLAYER.WEAPON.IMAGE_ARMED, (PLAYER.PLAYER_POS[0]*TILESIZE, PLAYER.PLAYER_POS[1]*TILESIZE))
 
+    """
     # RENDER BEASTS AND PORTAL
     for beast in BEAST_LIST:
         if beast.PORTAL_APPEAR:
             DISPLAYSURFACE.blit(pygame.image.load(portal_images[beast.PORTAL.FRAME]), (beast.PORTAL.POS[0]*TILESIZE, beast.PORTAL.POS[1]*TILESIZE))
         if beast.APPEAR:
             DISPLAYSURFACE.blit(beast.BEAST, (beast.POS[0]*TILESIZE, beast.POS[1]*TILESIZE))
+    """
 
     # RENDER ITEMS
     for item in GAME_ITEMS:
@@ -219,11 +227,14 @@ while not GAME_OVER:
         if orb.POS == ZIQA.ZIQA_POS and ZIQA.VULNERABLE:
             print('ZIQA HEALTH', ZIQA.HEALTH)
             ZIQA.HEALTH -= 10
+        """
         for beast in BEAST_LIST:
                 if orb.POS == beast.POS:
                     beast.APPEAR = False
                     BEAST_LIST.remove(beast)
                     orbs_list.remove(orb)
+        """
+
         if orb.POS[0] > MAPWIDTH or orb.POS[0] < 0 or orb.POS[1] > MAPHEIGHT or orb.POS[1] < 0: 
             orbs_list.remove(orb)
 
