@@ -16,11 +16,13 @@ class Tree:
         self.X_POS = random.randint(50, 300)
         self.Y_POS = random.randint(50, 450)
 
+"""
 class TEMPLE:
     def __init__(self):
         self.SPRITE = pygame.transform.scale(pygame.image.load('./sprites/temple.png'), (250, 250))
         self.X_POS = 6
         self.Y_POS = 1
+"""
 
 num_trees = 15
 trees = [Tree() for x in range (num_trees)]
@@ -54,7 +56,7 @@ TILESIZE = 50
 MAPWIDTH = 20
 MAPHEIGHT = 10 
 pygame.init()
-pygame.display.set_caption('LINKS ADVENTURE')
+pygame.display.set_caption('LEGEND OF ZELDA: MAGIC MIRROR')
 # MAPHEIGHT + 125 for inventory
 DISPLAYSURFACE = pygame.display.set_mode((MAPWIDTH*TILESIZE, MAPHEIGHT*TILESIZE))
 

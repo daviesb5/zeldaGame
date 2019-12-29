@@ -12,6 +12,7 @@ class SWORD():
         self.POS = [rand(0, MAPWIDTH-1), rand(0, MAPHEIGHT-1)]
         self.PLACED = True
 
+"""
 class WAND:
     def __init__(self):
         self.NAME = 'WAND'
@@ -19,6 +20,7 @@ class WAND:
         self.IMAGE_ARMED = pygame.transform.scale(self.IMAGE, (35, 35))
         self.POS = [rand(0, MAPWIDTH-1), rand(0, MAPHEIGHT-1)]
         self.PLACED = True
+"""
 
 class GOLD:
     NAME = 'BITCOIN'

@@ -18,10 +18,9 @@ SHIELD = items.SHIELD()
 BOW = items.BOW()
 ZIQA = enemies.ZIQA()
 PORTAL = enemies.PORTAL()
+"""
 TEMPLE = TEMPLE()
 MIDNA = heroes.MIDNA()
-"""
-
 """
 
 # GROUPINGS OF RELATED GAME OBJECTS
@@ -96,10 +95,15 @@ while not GAME_OVER:
         if (keys[K_SPACE]):
             key_events.key_space()
 
+        """
+        # Add this later
+
         # FIRE ARROW
         if (keys[K_f]):
             # if PLAYER.HASBOW == True:
                 arrow_list.append(heroes.ARROW(mail.ceail(PLAYER.PLAYER_POS[0]), math.ceil(PLAYER.PLAYER_POS[1]), PLAYER.DIRECTION))
+        """
+
         """
         # FIRE ORB FROM WAND
         if (keys[K_f]):
@@ -158,13 +162,13 @@ while not GAME_OVER:
         # ORB PATH MOVEMENT ANIMATION
         elif (event.type == USEREVENT + 4):
             for orb in orbs_list:
-                if orb.DIRECTION == 'd':
+                if orb.DIRECTION == 's':
                     orb.POS[1] += 1
-                elif orb.DIRECTION == 'u':
+                elif orb.DIRECTION == 'n':
                     orb.POS[1] -= 1
-                elif orb.DIRECTION == 'l':
+                elif orb.DIRECTION == 'w':
                     orb.POS[0] -= 1 
-                elif orb.DIRECTION == 'r':
+                elif orb.DIRECTION == 'e':
                     orb.POS[0] += 1
         """
 
@@ -191,8 +195,8 @@ while not GAME_OVER:
         DISPLAYSURFACE.blit(PLAYER.WOLF, (PLAYER.PLAYER_POS[0]*TILESIZE, PLAYER.PLAYER_POS[1]*TILESIZE))
     else:
         DISPLAYSURFACE.blit(PLAYER.SPRITE_POS, (PLAYER.PLAYER_POS[0]*TILESIZE, PLAYER.PLAYER_POS[1]*TILESIZE))
-    
 
+    """
     # RENDER TEMPLE
     DISPLAYSURFACE.blit(TEMPLE.SPRITE, (TEMPLE.X_POS*TILESIZE, TEMPLE.Y_POS*TILESIZE))
 
@@ -203,6 +207,7 @@ while not GAME_OVER:
             DISPLAYSURFACE.blit(MIDNA.SPRITE_POS, (PLAYER.PLAYER_POS[0]*TILESIZE + 20, PLAYER.PLAYER_POS[1] * TILESIZE + 35))
         else:
             DISPLAYSURFACE.blit(MIDNA.SPRITE_POS, (TEMPLE.X_POS*TILESIZE, TEMPLE.Y_POS*TILESIZE))
+    """
 
     # RENDERING ARMED ITEMS WITH PLAYER SPRITE
     if PLAYER.WEAPON:
