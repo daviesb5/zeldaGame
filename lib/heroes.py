@@ -11,7 +11,7 @@ class LINK:
         self.HAS_ARROW = False
         self.HEALTH = 100
         self.MANA = 200
-        self.DIRECTION = False
+        self.DIRECTION = 's'
         self.TRANSFORM = False
         self.CUR_DIRECTION = 's'
         """

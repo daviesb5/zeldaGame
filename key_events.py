@@ -9,6 +9,7 @@ Lib for all key events
 Compass directions: N/S, E/W
 """
 # IMAGES FOR LINK ANIMATED WALKING
+
 img_path = './sprites/link/'
 move = '0'
 n_path = img_path + 'n' + move.zfill(2)
@@ -25,19 +26,25 @@ s_images = [s_path+str(s)+'.png' for s in range(10)]
 e_images = [e_path+str(e)+'.png' for e in range(10)]
 
 """
-Old directions: F/B, R/L
-
 # IMAGES FOR LINK ANIMATED WALKING
-img_path = './sprites/link/link_'
-f_path = img_path + 'f' 
-b_path = img_path + 'b'
-r_path = img_path + 'r'
-l_path =  img_path + 'l'
+img_path = './sprites/link/'
+move = '00'
+n_path = img_path + 'n' + move
+w_path = img_path + 'w' + move
+s_path = img_path + 's' + move
+e_path = img_path + 'e' + move
 
-n_images = [f_path+str(f)+'.png' for f in range(7)]
-n_images = [b_path+str(b)+'.png' for b in range(7)]
-e_images = [r_path+str(r)+'.png' for r in range(7)] 
-w_images = [l_path+str(l)+'.png' for l in range(7)]
+n_images = [n_path+str(w)+'.png' for w in range(7)]
+w_images = [w_path+str(a)+'.png' for a in range(7)]
+s_images = [s_path+str(s)+'.png' for s in range(7)]
+e_images = [e_path+str(d)+'.png' for d in range(7)]
+
+self.PLAYER.PLAYER_INV.remove(self.PLAYER.WEAPON)
+self.PLAYER.WEAPON.PLACED = True
+"""
+
+"""
+Old directions: F/B, R/L
 
 # IMAGES FOR WOLF LINK ANIMATED WALKING
 img_path = './sprites/wolf/wolf_'
@@ -56,6 +63,7 @@ class KeyEvents:
     def __init__(self, PLAYER):
         self.PLAYER = PLAYER
         self.counter = 0
+        self.action_counter = 1
         self.wolf_counter = 0
         self.wolf_counter_lr = 0
         self.movement = .25
@@ -100,31 +108,21 @@ class KeyEvents:
         self.counter = (self.counter + 1) % len(e_images)
 
     def key_space(self):
+        # SPRITES FOR LINK SWORD-FIGHTING
+        melee = '04'
+        melee_path = img_path + self.PLAYER.DIRECTION + melee
+
+        n_melee = [melee_path+str(n)+'.png' for n in range(7)]
+        w_melee = [melee_path+str(w)+'.png' for w in range(7)]
+        s_melee = [melee_path+str(s)+'.png' for s in range(7)]
+        e_melee = [melee_path+str(e)+'.png' for e in range(7)]
+
         if self.PLAYER.HAS_SWORD:
-            new_path = '.sprites/link/'
-            melee = '04'
-            melee_path = new_path + self.PLAYER.DIRECTION + melee
-            melee += 1
-            
-            n_images = [melee_path+str(n)+'.png' for n in range(7)]
 
+            if self.PLAYER.DIRECTION == 'n':
+                self.PLAYER.SPRITE_POS = pygame.image.load(n_melee[self.counter])
+                self.counter = (self.counter + 1) % len(n_melee)
             """
-            # IMAGES FOR LINK ANIMATED WALKING
-            img_path = './sprites/link/'
-            move = '00'
-            n_path = img_path + 'n' + move
-            w_path = img_path + 'w' + move
-            s_path = img_path + 's' + move
-            e_path = img_path + 'e' + move
-
-            n_images = [n_path+str(w)+'.png' for w in range(7)]
-            w_images = [w_path+str(a)+'.png' for a in range(7)]
-            s_images = [s_path+str(s)+'.png' for s in range(7)]
-            e_images = [e_path+str(d)+'.png' for d in range(7)]
-
-            self.PLAYER.PLAYER_INV.remove(self.PLAYER.WEAPON)
-            self.PLAYER.WEAPON.PLACED = True
-
             # DROP WEAPON LOCATION
             if self.PLAYER.DIRECTION == 's':
                     self.PLAYER.WEAPON.POS[0] = self.PLAYER.PLAYER_POS[0]
