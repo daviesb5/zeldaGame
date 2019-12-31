@@ -10,14 +10,14 @@ Compass directions: N/S, E/W
 """
 # IMAGES FOR LINK ANIMATED WALKING
 img_path = './sprites/link/'
-move = '00'
-n_path = img_path + 'n' + move
-w_path = img_path + 'w' + move
-s_path = img_path + 's' + move
-e_path = img_path + 'e' + move
+move = '0'
+n_path = img_path + 'n' + move.zfill(2)
+w_path = img_path + 'w' + move.zfill(2)
+s_path = img_path + 's' + move.zfill(2)
+e_path = img_path + 'e' + move.zfill(2)
 
 """
-Note: Range of 10 means images go from ?000 to ?009. Having a range of 11 renders the last image ?0010, which returns an error.
+Note: Range of 9 means Python calls for sprites ranging from ?001 to ?009. Range of 10 means calling ?0010 for the last sprite.
 """
 n_images = [n_path+str(n)+'.png' for n in range(10)]
 w_images = [w_path+str(w)+'.png' for w in range(10)]
@@ -78,20 +78,12 @@ class KeyEvents:
         self.PLAYER.SPRITE_POS = pygame.image.load(s_images[self.counter])
         self.counter = (self.counter + 1) % len(s_images)
 
-        if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_s_images[self.wolf_counter])
-            self.wolf_counter = (self.wolf_counter + 1) % len(wolf_s_images)
-
     def key_up(self):
         self.PLAYER.PLAYER_POS[1] -= self.movement 
         self.PLAYER.DIRECTION = 'n'
 
         self.PLAYER.SPRITE_POS = pygame.image.load(n_images[self.counter])
         self.counter = (self.counter + 1) % len(n_images)
-
-        if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_n_images[self.wolf_counter])
-            self.wolf_counter = (self.wolf_counter + 1) % len(wolf_n_images)
 
     def key_left(self):
         self.PLAYER.PLAYER_POS[0] -= self.movement 
@@ -100,10 +92,6 @@ class KeyEvents:
         self.PLAYER.SPRITE_POS = pygame.image.load(w_images[self.counter])
         self.counter = (self.counter + 1) % len(w_images)
 
-        if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_w_images[self.wolf_counter_lr])
-            self.wolf_counter_lr = (self.wolf_counter_lr + 1) % len(wolf_w_images)
-
     def key_right(self):
         self.PLAYER.PLAYER_POS[0] += self.movement
         self.PLAYER.DIRECTION = 'e'
@@ -111,24 +99,14 @@ class KeyEvents:
         self.PLAYER.SPRITE_POS = pygame.image.load(e_images[self.counter])
         self.counter = (self.counter + 1) % len(e_images)
 
-        if self.PLAYER.TRANSFORM:
-            self.PLAYER.WOLF  = pygame.image.load(wolf_e_images[self.wolf_counter_lr])
-            self.wolf_counter_lr = (self.wolf_counter_lr + 1) % len(wolf_e_images)
-
     def key_space(self):
         if self.PLAYER.HAS_SWORD:
-            nen_path = '.sprites/link/'
+            new_path = '.sprites/link/'
             melee = '04'
-            n_path = nen_path + 'n' + melee
-            w_path = nen_path + 'w' + melee
-            s_path = nen_path + 's' + melee
-            e_path = nen_path + 'e' + melee
+            melee_path = new_path + self.PLAYER.DIRECTION + melee
             melee += 1
             
-            n_images = [n_path+str(w)+'.png' for w in range(7)]
-            w_images = [w_path+str(a)+'.png' for a in range(7)]
-            s_images = [s_path+str(s)+'.png' for s in range(7)]
-            e_images = [e_path+str(d)+'.png' for d in range(7)]
+            n_images = [melee_path+str(n)+'.png' for n in range(7)]
 
             """
             # IMAGES FOR LINK ANIMATED WALKING

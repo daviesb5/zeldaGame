@@ -13,6 +13,7 @@ class LINK:
         self.MANA = 200
         self.DIRECTION = False
         self.TRANSFORM = False
+        self.CUR_DIRECTION = 's'
         """
         self.WOLF = pygame.image.load('./sprites/wolf/wolf_f0.png')
         """

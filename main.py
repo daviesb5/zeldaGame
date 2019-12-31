@@ -105,6 +105,8 @@ while not GAME_OVER:
         """
 
         """
+        # ZIQA'S ABILITY
+        
         # FIRE ORB FROM WAND
         if (keys[K_f]):
             if PLAYER.WEAPON == WAND:
