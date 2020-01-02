@@ -20,10 +20,10 @@ e_path = img_path + 'e' + move.zfill(2)
 """
 Note: Range of 9 means Python calls for sprites ranging from ?001 to ?009. Range of 10 means calling ?0010 for the last sprite.
 """
-n_images = [n_path+str(n)+'.png' for n in range(10)]
-w_images = [w_path+str(w)+'.png' for w in range(10)]
-s_images = [s_path+str(s)+'.png' for s in range(10)]
-e_images = [e_path+str(e)+'.png' for e in range(10)]
+n_images = [n_path+str(n)+'.png' for n in range(9)]
+w_images = [w_path+str(w)+'.png' for w in range(9)]
+s_images = [s_path+str(s)+'.png' for s in range(9)]
+e_images = [e_path+str(e)+'.png' for e in range(9)]
 
 """
 # IMAGES FOR LINK ANIMATED WALKING
@@ -122,6 +122,15 @@ class KeyEvents:
             if self.PLAYER.DIRECTION == 'n':
                 self.PLAYER.SPRITE_POS = pygame.image.load(n_melee[self.counter])
                 self.counter = (self.counter + 1) % len(n_melee)
+            elif self.PLAYER.DIRECTION == 's':
+                self.PLAYER.SPRITE_POS = pygame.image.load(s_melee[self.counter])
+                self.counter = (self.counter + 1) % len(s_melee)
+            elif self.PLAYER.DIRECTION == 'e':
+                self.PLAYER.SPRITE_POS = pygame.image.load(e_melee[self.counter])
+                self.counter = (self.counter + 1) % len(e_melee)
+            elif self.PLAYER.DIRECTION == 'w':
+                self.PLAYER.SPRITE_POS = pygame.image.load(w_melee[self.counter])
+                self.counter = (self.counter + 1) % len(w_melee)
             """
             # DROP WEAPON LOCATION
             if self.PLAYER.DIRECTION == 's':
