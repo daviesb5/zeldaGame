@@ -17,27 +17,27 @@ spell	= character spell attack
 warp	= warp in
 
 ===================================
-NUMBERS
+SPRITES
 ===================================
-000	= stand
-001-010	= walk / run
-011-020 = roll
-021-030	= jump
-031-040 = move w/ melee
-041-050	= melee attack 1
-051-060	= melee attack 2
-061-070	= melee attack 3 ("super")
-071-080 = move w/ shield
-081-090	= block 1
-091-100 = move /w bow
-101-110	= shoot arrow 1
-111-120	= shoot arrow 2
-121-130	= move w/ long
-131-140	= long attack 1
-141-150	= long attack 2
-151-160	= move /w ability
-161-170	= ability 1
-171-180 = ability 2
-181-190	= ability 3
-191-200 = gets hit 
-201-210	= ???
+00	= stand
+000-009	= walk / run
+010-019 = roll
+020-029	= jump
+030-039 = move w/ melee
+040-049	= melee attack 1
+050-059	= melee attack 2
+060-069	= melee attack 3 ("super")
+070-079 = move w/ shield
+080-089	= block 1
+090-099 = move /w bow
+100-109	= shoot arrow 1
+110-119	= shoot arrow 2
+120-129	= move w/ long
+130-139	= long attack 1
+140-149	= long attack 2
+150-159	= move /w ability
+160-169	= ability 1
+170-179 = ability 2
+180-189	= ability 3
+190-199 = gets hit 
+200-209	= ???
